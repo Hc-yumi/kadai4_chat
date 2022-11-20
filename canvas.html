@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Canvas</title>
+</head>
+
+
+<body>
+
+  <h1>アイコンを作成しよう</h1>
+  <nav>
+
+    <!-- 線の色を変更 -->
+    <input type="color" id="color">
+
+    <!-- 線の太さを変更 -->
+    <input type="range" id="bold" value="5" min="1" max="100" step="0.1">
+    <!-- <span id="line_width">5</span> -->
+
+    <button id="clear_btn">削除</button>    
+
+    <!-- これを保存してアイコンで使用したい___保存する -->
+    <button id="save">保存</button>
+
+    <button id="load">呼び出す</button>
+
+    
+    <!-- canvas -->
+    <canvas id="drowarea" width="500" height="500" style="border:1px solid blue;"></canvas>
+
+
+    <!-- <div id="list"></div> -->
+    <img src="" id="tableBanner"/>
+
+
+  </nav>
+
+
+
+  <!-- JQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <!-- JQuery -->
+
+  
+  
+  
+  
+  <script>
+    
+    // 初期化
+    let canvas_mouse_event = false;
+    let oldX = 0; //ひとつ前の座業に代入
+    let ildY = 0; //ひとつ前の座標に代入
+    let bold_line = 5; //lineの太さ 最初の値
+
+    // let color = $("#color").val(); //lineの色
+    
+    //--- canvas のおまじない---//
+    const can = $("#drowarea")[0];
+    const ctx = can.getContext("2d");
+
+      
+    
+    // マウスの位置情報をとる
+    $(can).on("mousedown",function(e){
+      // console.log(e);
+      oldY = e.offsetY;
+      oldX = e.offsetX;
+      canvas_mouse_event = true;
+      
+    })
+
+    // 色変える
+    $("#color").on("change",function(){
+      color = $(this).val();
+    });
+
+    //線の太さ変える
+    $("#bold").on("change",function(){
+      bold_line = $("#bold").val();
+    });
+    
+    $(can).on("mousemove",function(e){
+      // console.log(e.offsetX);
+      if(canvas_mouse_event == true){
+        const px = e.offsetX;
+        const py = e.offsetY;
+        
+        //保持した色
+        ctx.strokeStyle = color;
+        ctx.lineWidth   = bold_line;
+        ctx.lineJoin = "round";
+        ctx.lineCap  = "round"; 
+        ctx.beginPath();
+        ctx.moveTo(oldX,oldY);
+        ctx.lineTo(px,py);
+        ctx.stroke();
+        oldX = px;
+        oldY = py;
+      }
+    })
+
+
+    //マウス外したら描かなくなる
+    $(can).on("mouseup",function(){
+      canvas_mouse_event = false;
+      
+    })
+
+    $(can).on("mouseover",function(){
+      canvas_mouse_event = false;
+    })
+
+    //削除する
+    $("#clear_btn").on("click",function(){
+      ctx.beginPath();
+      ctx.clearRect(0, 0, can.width, can.height);
+    });
+
+    // canvasを画像で保存
+
+   // 描いた線を保存する
+
+	// $("#save").on("click",function(){
+	// 	var canvas = $("#drowarea");
+  //   var src = canvas[0].toDataURL("image/png");
+	// 	// var url = canvas.toDataURL();
+	// 	localStorage.setItem("save_2",src);
+
+    $("#save").on("click",function getBase64Image(img){
+    var canvas = $("#drowarea");
+    canvas.width = img.width;
+    canvas.height = img.height;
+
+    // ctx = can.getContext("2d");
+    // ctx.drawImage(img, 0, 0);
+    var src = canvas[0].toDataURL("image/png");
+    // return src.replace(/^data:image\/(png|jpg);base64,/, "");
+    
+		// var url = canvas.toDataURL();
+		localStorage.setItem("save_2",src);
+
+    //呼び出しを書いてみる
+    // <img src="" id="tableBanner"/>//→htmlへ
+
+    var dataImage = localStorage.getItem('save_2');
+    bannerImg = $("#tableBanner");
+    bannerImg.src = "data:image/png;base64," + dataImage;
+
+
+    
+    
+    // 描いた線を呼び出す
+    // for(let i = 0; i < localStorage.length; i++){
+    //   const key = localStorage.key(i);
+    //   const value = localStorage.getItem(key);
+    // }
+    
+    // $("#load").on("click",function(){
+    //   var src_l = window.localStorage.getItem("save_2");
+    //   var image = new Image();
+    //   image.onload = function(){
+    //   context.drawImage(image, 0, 0);
+    //   };
+      
+    //   // image.src = url;
+    //   // 画面上に埋め込み
+    //   $("#list").append(image)
+
+    // });
+      
+    });
+
+    //線の太さ
+    // ctx.lineWidth = 10;
+
+    //選の形状
+    // ctx.lineCap = 'round';
+
+    //パスの開始(座標を初期化)
+    // ctx.beginPath();
+
+    //始点
+    // ctx.moveTo(20,40);
+
+    //終点
+    // ctx.lineTo(100,100);
+
+    // ctx.fillStyle = "#f00";
+    // ctx.lineWidth = 50;
+    // ctx.strokeStyle = "#777";
+
+    // ctx.arc(100, 100, 50, 0, Math.PI * 2, false);
+
+    //描画
+    // ctx.stroke();
+    
+    //パスを閉じる
+    // ctx.closePath();
+    
+    // ctx.fill();
+
+
+
+
+  </script>
+
+
+
+  
+</body>
+</html>

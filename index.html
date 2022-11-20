@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ChatAPP</title>
+  <script type="module" src="js/script.js"></script>
+
+  <!--resetとcssの順番は重要 -->
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/style.css">
+
+</head>
+<body>
+<!-- 背景選べるようにする・・？ -->
+
+  <!-- 別ルーム -->
+  <div>
+    <!-- 最初に入った人がオーナー 別人が入ろうとすると承認制 -->
+    <p>内緒話をする</p>
+    <!-- canvasで絵を同時に書く -->
+    <p>一緒におえかきをする</p>
+    <p>海外のおともだちとお話する</p>
+  </div>
+
+
+  <div id="uname">ログインした人の名前</div>
+
+
+
+  <div class="chat_container">
+
+    <div class="out" id="out">
+      <div id="output"></div>
+    </div>
+
+    <div class="massage_container">
+        <div> 名前：<input type="text" id="name"> 
+        </div>
+
+        <div class="massage_area">
+          <!-- メッセージ入力欄 -->
+            <textarea id="text"></textarea>
+            <ul>
+              
+            </ul>
+          <!-- 送信時間 --> 
+            <!-- <div id="time"></div> -->
+          <!-- 送信ボタン  -->
+            <button id="send">Go!</button>
+        </div>
+    </div>
+
+  </div>
+
+
+  <button id="out">Logout</button>
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- JQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<!-- JQuery -->
+
+
+
+
+</body>
+</html>

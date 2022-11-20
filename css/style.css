@@ -1,0 +1,104 @@
+body{
+  /* background-image: url(../img/sogen.jpg); */
+  background-size: cover;
+  min-height: 100vh;
+  width: 100%;
+}
+
+
+
+#output{
+  background-color: #8DB4E5;
+  height: 80vh;
+  overflow: scroll;
+  /* box-sizing: border-box; */
+  /* border-radius: 20%; */
+}
+
+.out{
+  padding: 2% 5%  ;
+  border: 2px solid gray;
+}
+
+/* #output:nth-child(odd) {
+  width: 30%;
+  background: #fff;
+  margin-left: auto;
+
+} */
+
+#output {
+  height: 250px;
+  overflow: auto;
+}
+
+.massage_container{
+  text-align: center;  
+}
+
+.massage_area{
+  height: 10vh;
+  display: flex;
+  justify-content: center;
+  
+}
+
+/*-------- どちらの発言かで表示分けている---- */
+
+.container{
+  display: flex;
+}
+
+.container:nth-child(even){
+  flex-direction: row-reverse;
+}
+
+.container_inner{
+  width: 30%;
+  padding: 2%;
+}
+
+/*-------- 削除機能の見せ方--------- */
+.delete_show{
+  cursor: pointer;
+}
+
+.delete_show:hover::after{
+  content: '[delete]';
+  font-size: 14px;
+  color: #fff;
+  margin-left: 4px;
+}
+
+
+
+.sender_name{
+  margin-bottom: -5px;
+  padding-left: 20px;
+  color: rgba(0, 0, 0, .40);
+}
+.sender_name.me{
+  float: right;
+  padding: 0 20px 0 0;
+}
+/* ------------------------------------------ */
+
+#text{
+  width: 60%;
+}
+
+#send{
+  width: 10%;
+}
+
+
+#send {
+  width: 20%;
+  height: auto;
+  background: #61E739;
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: bold;
+  border: 0;
+ }
+

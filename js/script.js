@@ -10,21 +10,12 @@
 // メッセージを消す機能
 // 名前+日時+メッセージ
 // overflow:autoでスクロール
-// アイコン選択？
 // 翻訳（英語・韓国語とか）transraterAPI
 // MAP連携(緯度経度を取得)
 // canvas（一緒に絵を書く）⇒保存で画像保存をする
 
 // 4秒経ったらコメントの表示が消える
 // 自分のキャラクターが行きたい場所に動いてくれる
-
-
-
-// 11/17に完了すること！
-//ログインページ
-//時間の取得            ⇒OK!!
-//消す操作              ⇒OK!!
-//文字を両端に寄せる！  ⇒OK!!
 
 
 //--------------------- 以下Firebase--------------------- //
@@ -53,93 +44,37 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
-// //--------------------- ログインページ--------------------- //
-//   //新規登録処理
-//   register.addEventListener('click', function(e) {
-//     var mailAddress = document.getElementById('mailAddress').value;
-//     var password = document.getElementById('password').value;
-    
-//     firebase.auth().createUserWithEmailAndPassword(mailAddress, password)
-//     .catch(function(error) {
-//       alert('登録できません（' + error.message + '）');
-//     });
-//   });
-
-
 
 // --リアルタイム接続---//
 // let newPostRef = firebase.database().ref(); //山崎先生の動画ではあったけど無くてもいける・・？ 
-
-
-//------------loginしたら動く--------------------//
-// onAuthStateChanged(auth, (user) => {
-//   if (user) {
-//       // User is signed in, see docs for a list of available properties
-//       // https://firebase.google.com/docs/reference/js/firebase.User
-//       const uid = user.uid;
-//       //ユーザー情報取得できます
-//       if (user !== null) {
-//           user.providerData.forEach((profile) => {
-//               //Login情報取得
-//               $("#uname").text(profile.displayName);
-//               // $("#prof").attr("src",profile.photoURL);
-//               // console.log("Sign-in provider: " + profile.providerId);
-//               // console.log("Provider-specific UID: " + profile.uid);
-//               // console.log("Email: " + profile.email);
-//               // console.log("Photo URL: " + profile.photoURL);
-//           });
-//           // $("#status").fadeOut(500);
-//       }
-
-
-// } else {
-//   _redirect();  // User is signed out
-// }
-// });
-
-
-// //---------logout--------------------//
-// ("#out").on("click", function () {
-//   // signInWithRedirect(auth, provider);
-//   signOut(auth).then(() => {
-//       // Sign-out successful.
-//       _redirect();
-//   }).catch((error) => {
-//       // An error happened.
-//       console.error(error);
-//   });
-// });
-
-
-// //--------リダイレクト---------//
-
-// function _redirect(){
-//   location.href="login.html";
-// }
-
-
-
 
 //---------以下チャット送信に関わるコード---------------------------//
 
   //firebaseを使う時に書くおまじない
   const db = getDatabase(app);
   const dbRef = ref(db,'kadai4Chat'); //
-  
-  // const myname = $('#name').val(); //.val()[0]
-  // console.log(uname,'unameの確認');
 
+  //------------iconの選択-------------------------//
+  const imgfile = ["img/01.jpg", "img/02.jpg"]
+  let char_img ="";
 
+  $("#stich").on("click",function(){
+    char_img = imgfile[0];
+    console.log(char_img);
+  })
 
-  // 送信処理
+  $("#lilo").on("click",function(){
+    char_img = imgfile[1];
+    console.log(char_img);
+  })
+
+  //------------------- 送信処理-------------------//
   $("#send").on('click', function(){
-      // id="uname" の場所を取得します
-      const myname = $('#name').val(); //.val()[0]
-      // console.log(uname,'unameの確認');
-
       // id="text"の場所を取得します
       const text = $('#text').val(); //.val()[0]
-      console.log(text,'textの確認');
+
+      //---iconの取得------//
+      const icon = char_img;
       
       // ------送信時間の表示-----------//
       // $(function(){
@@ -161,36 +96,24 @@ const app = initializeApp(firebaseConfig);
 
         // const showTime = `${y}/${mm}/${dd} ${hh}:${mmi}`;
         const showTime = `${mm}/${dd} ${hh}:${mmi}`;
-        console.log(showTime, "ff");
-
-        // $('#time').text(y+ '/' + m + '/'+ d + ' ' + h + ':' + mi);
-        // }, 1000);
-    // });
-
-      // time = $("#time").val();
-      // console.log(time,'時間の確認');
 
 
       //msgという箱にkeyと値を保存している
       const msg = {
-          keyname:myname, //右はmynameという箱をセットしている（上で定義した） カギ：値
+          charbox:icon,
           textbox:text,   //右はtextという箱ををセットしている（上で定義した） カギ：値
           timebox:showTime
       }
-
 
       //firebaseに送る準備をしている
       const newPostRef = push(dbRef) //データを送信できる準備
       set(newPostRef, msg); //firebaseの登録できる場所に保存するイメージ
 
-
       //送信後に、入力欄を空にする
-      $('#uname').val("");
       $("#text").val("");
 
       //最初のカーソルをunameに戻す（操作性の問題）
-      $("#uname").focus();
-
+      $("#text").focus();
       //send送信イベント この下消さない
   });
 
@@ -198,24 +121,17 @@ const app = initializeApp(firebaseConfig);
   $("#text").on("keydown",function(e){
     console.log(e);
     if(e.keyCode == 13){
-       // id="myname" の場所を取得します
-       const myname = $('#name').val(); //.val()[0]
-       console.log(myname,'mynameの確認');
- 
-       // id="text"の場所を取得します
-       const text = $('#text').val(); //.val()[0]
-       console.log(text,'textの確認');
 
-       // id="showTime"の場所を取得します
-       const showTime = $('#showTime').val(); //.val()[0]
-       console.log(showTime,'showTimeの確認');
+      const icon = char_img.val();
+      const text = $('#text').val(); //.val()[0]
+      const showTime = $('#showTime').val(); //.val()[0]
 
-       
-       //受信用の箱をつくった
-       const msg_ju = {
-        keyname:myname, //右はmynameという箱をセットしている（上で定義した） カギ：値
-        textbox:text,   //右はtextboxという箱ををセットしている（上で定義した）カギ：値
-        timebox:showTime
+
+       //受信用の箱
+        const msg_ju = {
+          charbox:icon,
+          textbox:text,   //右はtextboxという箱ををセットしている（上で定義した）カギ：値
+          timebox:showTime
     }
 
     //firebaseに送る準備をしている
@@ -226,48 +142,34 @@ const app = initializeApp(firebaseConfig);
     $('#out').scrollTop($('#output').height());
 
     //送信後に、入力欄を空にしましょう
-    $('#name').val("");
     $("#text").val("");
     }
 
   })
 
- 
+
   // 受信処理を記載（送信の中には書かない！）
   // 受取用の変数：data
   onChildAdded(dbRef, function(data){
 
     //----------------- usernameとかの一致を入れる--------------------------//
-
-    // // var messageField = $('#messageInput');
-    // var nameField = $('#name');
-    // var messageList = $('#text');
-
-      //ここからが受信処理
-
-      //登録されたデータを取得します
       // データの取得
       const msg_ju = data.val(); //上で関数の中に入れたdataのこと
-      // console.log(msg_ju, '取得したデータの塊');
       // ユニークkey取得
       const key = data.key;//ユニークキーを取得する
-      // console.log(key, 'データの塊にアクセス');
 
-      // es6のテンプレートリテラル
-      //チャットページへ書き込み
       let str = `  
           <div class = "container">
-            <div class="container_inner">
-              <p id="icon">${msg_ju.keyname}</p>
-              <p class="delete_show" id="delete_show">${msg_ju.textbox}</p>  
-              <p id="time">${msg_ju.timebox}</p>
-              <p data-a=${key} id="delete"></p>
-            <div>             
+            <div class="container_inner">              
+              <img src="${msg_ju.charbox}" class="chat_icon"> 
+              <div class="box">             
+                <p class="delete_show" id="delete_show">${msg_ju.textbox}</p>
+                <p id="time">${msg_ju.timebox}</p>
+                <p data-a=${key} id="delete"></p>                
+              </div>              
+            </div>            
           </div>        
       ` ;
-      //htmlに埋め込みましょう
-      //append();というjqueryのおまじない
-      
 
       $("#output").append(str);
 

@@ -5,7 +5,32 @@ body{
   width: 100%;
 }
 
+.icon{
+  padding: 2%;
+  margin: auto;
+  text-align: center;
+}
 
+.icon img{
+  width: 15%;
+  height: auto;
+}
+.icon img:hover{
+  opacity: 0.5;
+}
+
+
+.chat_icon{
+  border-radius: 50%;
+  width: 20%;
+  height: auto;
+}
+
+/* コメントと時間を横並びにする */
+.box{
+  display: flex;
+
+}
 
 #output{
   background-color: #8DB4E5;
@@ -28,7 +53,7 @@ body{
 } */
 
 #output {
-  height: 250px;
+  height: 550px;
   overflow: auto;
 }
 
@@ -61,6 +86,9 @@ body{
 /*-------- 削除機能の見せ方--------- */
 .delete_show{
   cursor: pointer;
+  background: pink;
+  padding: 5%;
+  border-radius: 40%;
 }
 
 .delete_show:hover::after{

@@ -11,22 +11,23 @@
   <!--resetとcssの順番は重要 -->
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/style.css">
+  <link href= "https://fonts.googleapis.com/icon?family=Material+Icons" rel= "stylesheet">
 
 </head>
 <body>
 <!-- 背景選べるようにする・・？ -->
 
   <!-- 別ルーム -->
-  <div>
+  <!-- <div> -->
     <!-- 最初に入った人がオーナー 別人が入ろうとすると承認制 -->
-    <p>内緒話をする</p>
+    <!-- <p>内緒話をする</p> -->
     <!-- canvasで絵を同時に書く -->
-    <p>一緒におえかきをする</p>
-    <p>海外のおともだちとお話する</p>
-  </div>
+    <!-- <p>一緒におえかきをする</p> -->
+    <!-- <p>海外のおともだちとお話する</p> -->
+  <!-- </div> -->
 
 <!------------- iconを作成するセクション(はじまり)--------------->
-  <h1 class="icon_txt">アイコンを作成しよう</h1>
+  <h1 class="icon_txt" id="creat_icon">アイコンを作成しよう</h1>
   <nav>
 
       <!-- canvas -->
@@ -64,6 +65,7 @@
   </nav>
   <!-------------iconを作成するセクション(おわり)------------->
 
+  <!-- 普通のチャット -->
 
   <div class="chat_container">
 
@@ -77,18 +79,31 @@
         <!-- 送信ボタン  -->
           <button id="send">Go!</button>
       </div>
-  </div>
-
+    </div>
 
     <div class="out" id="out">
       <div id="output"></div>
     </div>
-
-    
   </div>
 
+  <!-- <button id="out">Logout</button> -->
 
-  <button id="out">Logout</button>
+  <!-----------------チャットボット---------------->
+
+  <h1>チャットボット</h1>
+
+  <!--画面-->
+  <div id= "field">
+    <ul id= "chat-ul"></ul>
+  </div>
+
+  <!--入力場所，送信ボタン-->
+  <div id= "input-field">
+    <input type= "text" id= "chat-input">
+    <!-- <input type= "button" value= "Send" id= "chat-button" onclick='btnFunc()'> -->
+    <input type= "button" value= "Send" id= "chat-button">
+  </div>
+
 
 
 
@@ -97,6 +112,8 @@
 <!-- JQuery -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <!-- JQuery -->
+
+
 
 
 

@@ -54,6 +54,7 @@ const app = initializeApp(firebaseConfig);
   let oldX = 0; //ひとつ前の座業に代入
   let oldY = 0; //ひとつ前の座標に代入
   let bold_line = 5; //lineの太さ 最初の値
+  let dataImage = "";
 
   // let color = $("#color").val(); //lineの色
 
@@ -129,7 +130,8 @@ const app = initializeApp(firebaseConfig);
   var src = canvas[0].toDataURL("image/png");
   localStorage.setItem("save_2",src);
 
-  var dataImage = localStorage.getItem('save_2');
+  // var dataImage = localStorage.getItem('save_2');
+  dataImage = localStorage.getItem('save_2');
   console.log(dataImage);
 
   let str_img = `  
@@ -143,25 +145,32 @@ const app = initializeApp(firebaseConfig);
 
 
 
-//---------以下チャット送信に関わるコード---------------------------//
+//------------チャットで使用するiconを読み込むコード（はじまり）-----//
+const iconfile = dataImage;
+  console.log(iconfile);
+//------------チャットで使用するiconを読み込むコード（おわり）-----//
+
+
+
+//---------チャット送信に関わるコード(はじまり)---------------------------//
 
   //firebaseを使う時に書くおまじない
   const db = getDatabase(app);
   const dbRef = ref(db,'kadai4Chat'); //
 
   //------------iconの選択-------------------------//
-  const imgfile = ["img/01.jpg", "img/02.jpg"]
-  let char_img ="";
+  // const imgfile = ["img/01.jpg", "img/02.jpg"]
+  // let char_img ="";
 
-  $("#stich").on("click",function(){
-    char_img = imgfile[0];
-    console.log(char_img);
-  })
+  // $("#stich").on("click",function(){
+  //   char_img = imgfile[0];
+  //   console.log(char_img);
+  // })
 
-  $("#lilo").on("click",function(){
-    char_img = imgfile[1];
-    console.log(char_img);
-  })
+  // $("#lilo").on("click",function(){
+  //   char_img = imgfile[1];
+  //   console.log(char_img);
+  // })
 
 
   //------------------- 送信処理-------------------//
@@ -170,7 +179,8 @@ const app = initializeApp(firebaseConfig);
       const text = $('#text').val(); //.val()[0]
 
       //---iconの取得------//
-      const icon = char_img;
+      // const icon = char_img;//既存画像の方
+      const icon = dataImage; //icon作成の方
       
       // ------送信時間の表示-----------//
       // $(function(){
@@ -211,6 +221,8 @@ const app = initializeApp(firebaseConfig);
       //最初のカーソルをunameに戻す（操作性の問題）
       $("#text").focus();
       //send送信イベント この下消さない
+
+
   });
 
   // 送信処理2
@@ -218,7 +230,8 @@ const app = initializeApp(firebaseConfig);
     console.log(e);
     if(e.keyCode == 13){
 
-      const icon = char_img.val();
+      // const icon = char_img.val();// 既存画像の方
+      const icon = dataImage.val(); //作成したiconの方
       const text = $('#text').val(); //.val()[0]
       const showTime = $('#showTime').val(); //.val()[0]
 
@@ -234,10 +247,9 @@ const app = initializeApp(firebaseConfig);
     const newPostRef = push(dbRef) //データを送信できる準備
     set(newPostRef, msg_ju); //firebaseの登録できる場所に保存するイメージ
 
-    //スクロールトップ？
-    $('#out').scrollTop($('#output').height());
+  
 
-    //送信後に、入力欄を空にしましょう
+    // 送信後に、入力欄を空にしましょう
     $("#text").val("");
     }
 
@@ -257,9 +269,8 @@ const app = initializeApp(firebaseConfig);
       let str = `  
           <div class = "container">
             <div class="container_inner">              
-            <img src="${msg_ju.charbox}" class="chat_icon"> 
-            <img src="${msg_ju.charbox}" class="chat_icon"> 
-            <div class="box">             
+              <img src="${msg_ju.charbox}" class="chat_icon"> 
+              <div class="box">             
                 <p class="delete_show" id="delete_show">${msg_ju.textbox}</p>
                 <p id="time">${msg_ju.timebox}</p>
                 <p data-a=${key} id="delete"></p>                
@@ -270,6 +281,9 @@ const app = initializeApp(firebaseConfig);
 
       $("#output").append(str);
 
+      const output = document.getElementById('output');
+      output.scrollTo(0, output.scrollHeight);
+
   })
 
   //削除ボタン
@@ -279,6 +293,8 @@ const app = initializeApp(firebaseConfig);
     remove(ref(db, "kadai4Chat/" + del));
     location.reload();
   })
+
+  //---------チャット送信に関わるコード(おわり)---------------------------//
 
 
 

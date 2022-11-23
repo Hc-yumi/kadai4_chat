@@ -5,6 +5,16 @@ body{
   width: 100%;
 }
 
+
+/* ---------icon(作成したアイコン)はじまり------ */
+
+.testicon{
+  padding: 2%;
+  margin: auto;
+  text-align: center;
+}
+/* ---------icon(作成したアイコン)おわり------ */
+
 .icon{
   padding: 2%;
   margin: auto;

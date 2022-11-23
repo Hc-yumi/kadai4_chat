@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ChatAPP</title>
   <script type="module" src="js/script.js"></script>
+  <!-- <script type="module" src="js/icon.js"></script> -->
 
   <!--resetとcssの順番は重要 -->
   <link rel="stylesheet" href="css/reset.css">
@@ -24,10 +25,35 @@
     <p>海外のおともだちとお話する</p>
   </div>
 
+<!------------- iconを作成するセクション(start)--------------->
+  <h1>アイコンを作成しよう</h1>
+  <nav>
 
-  <div>
-    アイコンにするキャラクターを選んでね。
-  </div>
+    <!-- 線の色を変更 -->
+    <input type="color" id="color">
+
+    <!-- 線の太さを変更 -->
+    <input type="range" id="bold" value="5" min="1" max="100" step="0.1">
+    <!-- <span id="line_width">5</span> -->
+
+    <button id="clear_btn">削除</button>    
+
+    <!-- これを保存してアイコンで使用したい___保存する -->
+    <button id="save">保存</button>
+
+    <!-- <button id="load">呼び出す</button> -->
+
+    
+    <!-- canvas -->
+    <canvas id="drowarea" width="500" height="500" style="border:1px solid blue;"></canvas>
+    
+    <!-- 描いた絵を表示させる -->
+    <div id="tabletest"></div>
+
+  </nav>
+  <!--------------- iconを作成するセクション(end)------------->
+
+
 
   <div class="icon">
     <img src="img/01.jpg" id="stich">
@@ -62,25 +88,6 @@
 
 
   <button id="out">Logout</button>
-
-      
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

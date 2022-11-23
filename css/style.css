@@ -69,7 +69,6 @@ body{
 }
 
 /*-------- どちらの発言かで表示分けている---- */
-
 .container{
   display: flex;
 }
@@ -88,7 +87,7 @@ body{
   cursor: pointer;
   background: pink;
   padding: 5%;
-  border-radius: 40%;
+  border-radius: 20%;
 }
 
 .delete_show:hover::after{

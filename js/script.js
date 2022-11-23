@@ -161,8 +161,9 @@ const app = initializeApp(firebaseConfig);
       let str = `  
           <div class = "container">
             <div class="container_inner">              
-              <img src="${msg_ju.charbox}" class="chat_icon"> 
-              <div class="box">             
+            <img src="${msg_ju.charbox}" class="chat_icon"> 
+            <img src="${msg_ju.charbox}" class="chat_icon"> 
+            <div class="box">             
                 <p class="delete_show" id="delete_show">${msg_ju.textbox}</p>
                 <p id="time">${msg_ju.timebox}</p>
                 <p data-a=${key} id="delete"></p>                

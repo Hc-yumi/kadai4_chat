@@ -188,11 +188,11 @@ const iconfile = dataImage;
   //   console.log(char_img);
   // })
 
-
+// ここから（チャットボットを機能させるには）
   //------------------- 送信処理-------------------//
   $("#send").on('click', function(){
       // id="text"の場所を取得します
-      const text = $('#text').val(); //.val()[0]
+      const text = $('#chat-input').val(); //.val()[0]
 
       //---iconの取得------//
       // const icon = char_img;//既存画像の方
@@ -232,23 +232,23 @@ const iconfile = dataImage;
       set(newPostRef, msg); //firebaseの登録できる場所に保存するイメージ
 
       //送信後に、入力欄を空にする
-      $("#text").val("");
+      $("#chat-input").val("");
 
       //最初のカーソルをunameに戻す（操作性の問題）
-      $("#text").focus();
+      $("#chat-input").focus();
       //send送信イベント この下消さない
 
 
   });
 
   // 送信処理2
-  $("#text").on("keydown",function(e){
+  $("#chat-input").on("keydown",function(e){
     console.log(e);
     if(e.keyCode == 13){
 
       // const icon = char_img.val();// 既存画像の方
       const icon = dataImage.val(); //作成したiconの方
-      const text = $('#text').val(); //.val()[0]
+      const text = $('#chat-input').val(); //.val()[0]
       const showTime = $('#showTime').val(); //.val()[0]
 
 
@@ -265,8 +265,8 @@ const iconfile = dataImage;
 
   
 
-    // 送信後に、入力欄を空にしましょう
-    $("#text").val("");
+    // 送信後に、入力欄を空に
+    $("#chat-input").val("");
     }
 
   })
@@ -282,23 +282,38 @@ const iconfile = dataImage;
       // ユニークkey取得
       const key = data.key;//ユニークキーを取得する
 
-      let str = `  
-          <div class = "container">
-            <div class="container_inner">              
-              <img src="${msg_ju.charbox}" class="chat_icon"> 
-              <div class="box">             
-                <p class="delete_show" id="delete_show">${msg_ju.textbox}</p>
-                <p id="time">${msg_ju.timebox}</p>
-                <p data-a=${key} id="delete"></p>                
-              </div>              
-            </div>            
-          </div>        
+/* <div class="container_inner">  
+</div>  */
+      let str = `
+            <div class="chat-ul"> 
+              <div class="chat-right">
+                  <li class="right">                                
+                    <img src="${msg_ju.charbox}" class="chat_icon"> 
+                  </li>
+                
+
+                  <li class="right_text">                              
+                    <p class="delete_show" id="delete_show">${msg_ju.textbox}</p>
+                  </li>
+
+                  <li class="right">
+                    <p id="time">${msg_ju.timebox}</p>
+                  </li>
+
+                  <li class="right">
+                    <p data-a=${key} id="delete"></p>  
+                  </li>  
+
+                </ul> 
+              </div>
+            </div>              
       ` ;
 
-      $("#output").append(str);
+      $("#chat-ul").append(str);
+      $("#chat-ul").addClass("chat-right");
 
       // ---スクロールトップ--//
-      const output = document.getElementById('output');
+      const output = document.getElementById('chat-ul');
       output.scrollTo(0, output.scrollHeight);
 
   })
@@ -312,7 +327,7 @@ const iconfile = dataImage;
   })
 
   //---------チャット送信に関わるコード(おわり)---------------------------//
-
+// ここまで（チャットボットを機能させるには）
 
   // ---------------チャットボット----------------------------//
   // ロボットの返答内容
@@ -367,13 +382,13 @@ const iconfile = dataImage;
   }
 
 
-  const chatBtn = document.getElementById('chat-button');
+  const chatBtn = document.getElementById('send');
   const inputText = document.getElementById('chat-input');
 
 
   // 送信ボタンを押した時の処理
 
-  $("#chat-button").on("click",function(){
+  $("#send").on("click",function(){
   
   // function btnFunc() {
     if (!inputText.value) return false;
@@ -420,7 +435,7 @@ const iconfile = dataImage;
 })
 
 
-  // 最初に1つロボットから話しかけられる
+  // 最初に2つロボットから話しかけられる
   output(chat[0], 'robot');
 
   setTimeout( ()=> {

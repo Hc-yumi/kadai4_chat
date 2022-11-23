@@ -65,43 +65,46 @@
   </nav>
   <!-------------iconを作成するセクション(おわり)------------->
 
-  <!-- 普通のチャット -->
-
-  <div class="chat_container">
-
-    <div class="massage_container">
-      <div class="massage_area">
-        <!-- メッセージ入力欄 -->
-          <textarea id="text"></textarea>
-          <ul>
-            
-          </ul>
-        <!-- 送信ボタン  -->
-          <button id="send">Go!</button>
+  <!-- 普通のチャット + チャットボット -->
+  <h1>自作アイコンでチャットボットとしゃべりしよう！</h1>
+      <!--画面-->
+      <div id="field">
+        <ul id= "chat-ul"></ul>
+        <!-- <div id="chat-ul"></div> -->
       </div>
-    </div>
 
-    <div class="out" id="out">
-      <div id="output"></div>
-    </div>
-  </div>
+  <!-- <div class="chat_container"> -->
+
+    <!-- <div class="massage_container"> -->
+      <!-- <div class="massage_area"> -->
+
+        <!--入力場所、送信ボタン -->
+        <div id= "input-field">          
+          <input type= "text" id= "chat-input">
+          <input type= "button" value= "Send" id= "send">        
+          <!-- <button id="send">Go!</button> -->
+        </div>
+
+      <!-- </div> -->
+    <!-- </div> -->
+
+
+      <!--画面-->
+      <!-- <div id= "field">
+        <ul id= "chat-ul"></ul>
+      </div> -->
+
+  <!-- </div> -->
 
   <!-- <button id="out">Logout</button> -->
 
   <!-----------------チャットボット---------------->
 
-  <h1>チャットボット</h1>
-
-  <!--画面-->
-  <div id= "field">
-    <ul id= "chat-ul"></ul>
-  </div>
-
   <!--入力場所，送信ボタン-->
-  <div id= "input-field">
-    <input type= "text" id= "chat-input">
+  <!-- <div id= "input-field"> -->
+    <!-- <input type= "text" id= "chat-input"> -->
     <!-- <input type= "button" value= "Send" id= "chat-button" onclick='btnFunc()'> -->
-    <input type= "button" value= "Send" id= "chat-button">
+    <!-- <input type= "button" value= "Send" id= "chat-button"> -->
   </div>
 
 

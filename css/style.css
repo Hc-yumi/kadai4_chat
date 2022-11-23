@@ -58,6 +58,11 @@ nav{
 }
 /* ----------------既存の画像（おわり）--------------------- */
 
+/* -----------------チャットの部分はじまり----------------- */
+/* .chat_container{
+  padding: 5% 0 15%;
+} */
+
 
 /* コメントと時間を横並びにする */
 .box{
@@ -65,7 +70,7 @@ nav{
 
 }
 
-#output{
+#chat-ul{ /*--元 #output---*/
   background-color: #8DB4E5;
   height: 80vh;
   overflow: scroll;
@@ -73,32 +78,33 @@ nav{
   /* border-radius: 20%; */
 }
 
-.out{
+/* .out{
   padding: 2% 5%  ;
   border: 2px solid gray;
-}
+} */
 
-/* #output:nth-child(odd) {
+/* #chat-ul:nth-child(odd) { 元#output
   width: 30%;
   background: #fff;
   margin-left: auto;
 
 } */
 
-#output {
+#chat-ul { /*--元 #output---*/
   height: 550px;
   overflow: auto;
 }
 
-.massage_container{
+/* .massage_container{
   text-align: center;  
-}
+  padding: 5% 0 0 0;
+} */
 
 .massage_area{
   height: 10vh;
   display: flex;
   justify-content: center;
-  
+  /* padding: 10% 0 10%; */
 }
 
 
@@ -117,9 +123,9 @@ h1{
 }
 /*チャットのフィールド*/
 #field{
-  width: 300px;
-  height: 230px;
-  padding: 7px 0 14px;
+  width: 75%;
+  height: 530px;
+  /* padding: 5%; */
   box-sizing: border-box;
   background-color: #EEE;
   margin: 0 auto;
@@ -165,7 +171,7 @@ h1{
   outline: 0;
 }
 /*送信ボタン*/
-#chat-button{
+#send{
   cursor: pointer;
   height: 25px;
   width: 24%;
@@ -180,7 +186,7 @@ h1{
   box-sizing: border-box;
   border-radius: 6.5px;
 }
-#chat-button:focus{
+#send:focus{
   outline: 0;
   background: #A899FF;
 }
@@ -212,9 +218,10 @@ h1{
 /*自分の吹き出し*/
 .chat-right{
   margin-right: 15px;
-  background: #A4E496;
-  text-align: left;
+  /* background: #A4E496; */
+  /* text-align: left; */
 }
+
 /*吹き出しの矢印部分: ひし形*/
 .chat-right::before{
   display: block;
@@ -260,6 +267,14 @@ text-align: left;
 text-align: right;
 }
 
+.right_text{
+text-align: right;
+/* background-color:; */
+  margin-right: 15px;
+  background: #A4E496;
+
+}
+
 /* -------------チャットボット（おわり）--------------- */
 
 
@@ -270,9 +285,9 @@ text-align: right;
   display: flex;
 }
 
-/* .container:nth-child(even){
+.container:nth-child(){
   flex-direction: row-reverse;
-} */
+}
 
 .container_inner{
   width: 30%;
@@ -282,18 +297,17 @@ text-align: right;
 /*-------- 削除機能の見せ方--------- */
 .delete_show{
   cursor: pointer;
-  background: pink;
-  padding: 5%;
-  border-radius: 20%;
+  /* background: pink; */
+  /* padding: 5%; */
+  /* border-radius: 20%; */
 }
 
 .delete_show:hover::after{
   content: '[delete]';
-  font-size: 14px;
+  /* font-size: 14px; */
   color: #fff;
-  margin-left: 4px;
+  /* margin-left: 4px; */
 }
-
 
 
 .sender_name{
@@ -307,22 +321,22 @@ text-align: right;
 }
 /* ------------------------------------------ */
 
-#text{
+#chat-input{
   width: 60%;
 }
 
-#send{
+/* #send{
   width: 10%;
 }
 
 
 #send {
-  width: 20%;
+  width: 10%;
   height: auto;
   background: #61E739;
   color: #fff;
   font-size: 1.5rem;
   font-weight: bold;
   border: 0;
- }
+ } */
 

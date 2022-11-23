@@ -49,11 +49,27 @@ const app = initializeApp(firebaseConfig);
 // let newPostRef = firebase.database().ref(); //山崎先生の動画ではあったけど無くてもいける・・？ 
 
 // -----------icon作成に関わるコード（はじまり）-------------------------//
+  //----なぞり絵を選ぶ------//
+  $("#sun").on("click",function(){
+    $("#drowarea").css('background-image','url(../img/sun.png)');
+  })
+
+  $("#miffy").on("click",function(){
+    $("#drowarea").css('background-image','url(../img/miffy.png)');
+  })
+
+  $("#buta").on("click",function(){
+    $("#drowarea").css('background-image','url(../img/buta.png)');
+  })
+
+
+
   // 初期化
   let canvas_mouse_event = false;
   let oldX = 0; //ひとつ前の座業に代入
   let oldY = 0; //ひとつ前の座標に代入
   let bold_line = 5; //lineの太さ 最初の値
+  let color = "#000";
   let dataImage = "";
 
   // let color = $("#color").val(); //lineの色
@@ -74,7 +90,7 @@ const app = initializeApp(firebaseConfig);
 
   // 色変える
   $("#color").on("change",function(){
-    color = $("#color").val();
+    color = $(this).val();
   });
 
   //線の太さ変える
@@ -281,6 +297,7 @@ const iconfile = dataImage;
 
       $("#output").append(str);
 
+      // ---スクロールトップ--//
       const output = document.getElementById('output');
       output.scrollTo(0, output.scrollHeight);
 

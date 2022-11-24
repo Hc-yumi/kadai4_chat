@@ -448,6 +448,31 @@ const iconfile = dataImage;
 
 
 
+//###############################################
+//Logout処理
+//###############################################
+$("#out").on("click", function () {
+  // signInWithRedirect(auth, provider);
+  signOut(auth).then(() => {
+      // Sign-out successful.
+      _redirect();
+  }).catch((error) => {
+      // An error happened.
+      console.error(error);
+  });
+});
+
+
+//###############################################
+//Login画面へリダイレクト(関数作成)
+//###############################################
+function _redirect(){
+  location.href="login.html";
+}
+
+
+
+
 
 
 

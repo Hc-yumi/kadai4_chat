@@ -34,12 +34,10 @@ from "https://www.gstatic.com/firebasejs/9.1.0/firebase-auth.js";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyChxU8kuWHwcRO6xHdX-Duy47a_4LO2j70",
-  authDomain: "kadai4chat-44f1c.firebaseapp.com",
-  projectId: "kadai4chat-44f1c",
-  storageBucket: "kadai4chat-44f1c.appspot.com",
-  messagingSenderId: "327560358192",
-  appId: "1:327560358192:web:292e0ab88067fdcab6c0f5"
+ 
+  // ここに記載！！！
+
+  
 };
 
 // Initialize Firebase

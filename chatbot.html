@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>chatbot</title>
+
+  <script type="module" src="js/chatbot.js"></script>
+  <!-- <script type="module" src="js/icon.js"></script> -->
+
+  <!--resetとcssの順番は重要 -->
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/chatbot.css">
+  <link href= "https://fonts.googleapis.com/icon?family=Material+Icons" rel= "stylesheet">
+
+</head>
+<body>
+  <h1>チャットボット</h1>
+
+<!--画面-->
+<div id= "field">
+    <ul id= "chat-ul"></ul>
+</div>
+
+<!--入力場所，送信ボタン-->
+<div id= "input-field">
+    <input type= "text" id= "chat-input">
+    <input type= "button" value= "Send" id= "chat-button">
+</div>
+
+
+<!-- JQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<!-- JQuery -->
+
+
+</body>
+</html>

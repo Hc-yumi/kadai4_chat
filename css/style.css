@@ -12,7 +12,7 @@ nav{
 }
 
 .icon_txt{
-  padding: 3%;
+  padding: 5%;
   font-weight: bold;
   text-align: center;
   font-size: 2rem;
@@ -53,10 +53,16 @@ nav{
 
 .chat_icon{
   border-radius: 50%;
-  width: 50%;
+  width: 20%;
   height: auto;
 }
 /* ----------------既存の画像（おわり）--------------------- */
+
+/* ---------------------チャットのはじめ---------------------- */
+.chat_str{
+  font-size: 1.5rem;
+  font-weight: bold;
+}
 
 /* -----------------チャットの部分はじまり----------------- */
 /* .chat_container{
@@ -123,7 +129,7 @@ h1{
 }
 /*チャットのフィールド*/
 #field{
-  width: 75%;
+  width: 55%;
   height: 530px;
   /* padding: 5%; */
   box-sizing: border-box;
@@ -143,7 +149,7 @@ h1{
   display:none;
 }
 #input-field{
-  width: 300px;
+  width: 55%;
   height: 45px;
   display: flex;
   box-sizing: border-box;
@@ -151,8 +157,10 @@ h1{
   border-left: 1px solid #777;
   border-right: 1px solid #777;
   background-color: #FFF;
-  margin: 0 auto;
+  margin: 0 auto 15% auto ;
+
 }
+
 /*入力する場所*/
 #chat-input{
   height: 25px;
@@ -167,7 +175,7 @@ h1{
   margin: auto 10px;
 }
 #chat-input:focus{
-  border: 1.3px solid #8873FF;
+  border: 1.3px solid #FFCCCC;
   outline: 0;
 }
 /*送信ボタン*/
@@ -178,7 +186,7 @@ h1{
   margin: auto ;
   margin-right: 7%; 
   font-size: 13px;
-  background: #8873FF;
+  background: #FFCCCC;
   color: white;
   display: block;
   /*デフォルトのボーダーを消す*/
@@ -271,7 +279,7 @@ text-align: right;
 text-align: right;
 /* background-color:; */
   margin-right: 15px;
-  background: #A4E496;
+  /* background: #A4E496; */
 
 }
 
